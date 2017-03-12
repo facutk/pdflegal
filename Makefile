@@ -8,6 +8,7 @@ deploy:
 update:
 	@echo "Makefile: Doing UPDATE stuff like grunt, gulp, rake,..."
 	@pm2 list
+	@env
 	@whoami
 	@pwd
 	@npm install
