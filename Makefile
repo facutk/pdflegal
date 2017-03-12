@@ -7,6 +7,7 @@ deploy:
 
 update:
 	@echo "Makefile: Doing UPDATE stuff like grunt, gulp, rake,..."
+	@ls
 	@pm2 list
 	@whoami
 	@pwd
