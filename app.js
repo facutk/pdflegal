@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 app.get('/', (req, res) => {
-  res.send('pdflegal');
+  res.send('pdflegal api');
 });
 
 app.listen(3001, () => {
