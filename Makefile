@@ -7,8 +7,8 @@ deploy:
 
 update:
 	@echo "Makefile: Doing UPDATE stuff like grunt, gulp, rake,..."
+	@whoami
+	@pwd
 	@npm install
 	@echo "pm2 reloading services"
 	@pm2 gracefulReload all
-	@whoami
-	@pwd
