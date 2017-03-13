@@ -5,6 +5,10 @@ app.get('/', (req, res) => {
   res.send('pdflegal api');
 });
 
+app.get('/add', (req, res) => {
+  res.send('add file');
+});
+
 app.listen(3001, () => {
   console.log('Listening on port 3001');
 });
