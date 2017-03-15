@@ -6,7 +6,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/add', function(req, res) {
-    console.log('adding');
+    console.log('adding file');
     setTimeout(function() {
         if (Math.random() > 0.8 ) {
             console.log('error adding file');
