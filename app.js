@@ -6,7 +6,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/add', (req, res) => {
-  res.send('add file');
+  res.send('file added');
 });
 
 app.get('/status', (req, res) => {
