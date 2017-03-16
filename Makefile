@@ -6,6 +6,7 @@ deploy:
 	@git push git@api.pdflegal.com.ar:~/pdflegal master
 
 update:
+	@echo $USER
 	@pwd
 	@echo "Makefile: Doing UPDATE stuff like grunt, gulp, rake,..."
 	@npm install
