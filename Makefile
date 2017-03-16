@@ -6,10 +6,9 @@ deploy:
 	@git push git@api.pdflegal.com.ar:~/pdflegal master
 
 update:
-	@echo $USER
+	@whoami
 	@pwd
 	@echo "Makefile: Doing UPDATE stuff like grunt, gulp, rake,..."
 	@npm install
 	@echo "pm2 reloading services"
 	@sudo ./etc/init.d/pm2-facutk restart
-	@whoami
