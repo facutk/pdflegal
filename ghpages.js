@@ -8,5 +8,5 @@ ghpages.publish(path.join(__dirname, 'dist'), {
     repo,
     branch
 }, (error) => {
-    console.log(`deployement ${error ? 'successfull' : error}`);
+    console.log('deployment done');
 });
