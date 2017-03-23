@@ -2,7 +2,7 @@ import React from 'react';
 
 const Root = () => (
     <div>
-        El Reacto
+        Th3 Reac7
     </div>
 );
 
