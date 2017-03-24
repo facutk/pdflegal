@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-GHPAGES_REPO="https://github.com/pdflegal/pdflegal.github.io.git"
+GHPAGES_REPO="git@github.com:pdflegal/pdflegal.github.io.git"
 GHPAGES_BRANCH="master"
 DIST_FOLDER="dist"
 CNAME="www.pdflegal.com.ar"
