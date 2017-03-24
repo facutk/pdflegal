@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack-dev-server": "webpack-dev-server --hot --inline --history-api-fallback",
     "dev": "npm run webpack-dev-server",
-    "postinstall": "webpack -p"
+    "webpack-production": "webpack -p",
+    "push-to-ghpages": "node push-to-ghpages.js"
   },
   "author": "",
   "license": "ISC",
