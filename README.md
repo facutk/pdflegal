@@ -14,4 +14,7 @@ git$ git clone https://github.com/facutk/pdflegal.git && cd pdflegal
 git$ make configure
 ```
 
+## Deployment
+
+Current deployment is handled via codeship.
 ![codeship status](https://codeship.com/projects/4f8c0be0-f2d5-0134-7372-3eafc7b1bd2f/status?branch=master)
