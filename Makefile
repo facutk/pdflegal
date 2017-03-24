@@ -13,4 +13,4 @@ update:
 	@echo "pm2 reloading services"
 	@sudo /etc/init.d/pm2-facutk restart
 	@echo "deploying to gh-pages"
-	@node ghpages.js
+	@node push-to-ghpages.js

@@ -9,7 +9,10 @@ local$ ssh root@server
 local$ ssh-copy-id git@server
 local$ ssh git@server
 git$ sudo apt update && sudo apt upgrade
-git$ sudo apt install git redis nodejs npm
+git$ sudo apt install -y git nginx redis
+git$ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+git$ sudo apt-get install -y nodejs
+git$ sudo npm install -g pm2
 git$ git clone https://github.com/facutk/pdflegal.git && cd pdflegal
 git$ make configure
 ```
