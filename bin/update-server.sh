@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-cd ~/pdflegal/server
+cd "$(dirname "$0")/../server"
 git pull
 npm install
 node server.js
