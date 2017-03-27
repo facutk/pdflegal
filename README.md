@@ -43,3 +43,33 @@ Current deployment is handled via codeship.
 - Add new project > Link to github project repo.
 - Setting > Deployment > Custom Script.
 - ```npm install && npm run webpack-production && npm run push-to-ghpages```
+
+
+# Diagrams
+
+## Architecture
+
+```
+GITHUB -----> CODESHIP -----> CDN
+                      \-----> WORKERS
+
+REACT - FETCH
+
+PM2 - EXPRESS SERVER - REDIS
+
+UNIX JOBS
+
+```
+
+
+## Processing flow
+```
+Client          Server        Queue          Worker
+  |               |             |              |
+  X-------------->|             |              |          Add file
+  |               |             |              |
+  |               X------------>|              |          Queue job
+  |               |             |              |
+  |               |             X------------->|          Dispatch job
+
+```
