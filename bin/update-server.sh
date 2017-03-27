@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-env
+cd ~/pdflegal/server
+git pull
+npm install
+node server.js
