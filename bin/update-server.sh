@@ -2,4 +2,4 @@
 cd "$(dirname "$0")/../server"
 git pull
 npm install
-pm2 gracefulReload
+pm2 gracefulReload all
