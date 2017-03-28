@@ -1,8 +1,11 @@
 import React from 'react';
 
 const Root = () => (
-    <div>
-        El Reacto {(()=>{console.log(__API__)})()}
+    <div onClick={()=>{
+            console.log(__API__);
+            fetch(__API__).then(response => console.log(response));
+        }}>
+        El Reacto 
     </div>
 );
 
