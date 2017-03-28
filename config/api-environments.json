@@ -1,0 +1,4 @@
+{
+    "production": "http://api.pdflegal.com.ar",
+    "default": "http://localhost:3001"
+}

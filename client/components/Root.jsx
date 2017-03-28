@@ -2,7 +2,7 @@ import React from 'react';
 
 const Root = () => (
     <div>
-        El Reacto
+        El Reacto {(()=>{console.log(__API__)})()}
     </div>
 );
 

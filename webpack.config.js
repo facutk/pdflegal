@@ -1,6 +1,8 @@
 const path = require('path');
+const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const resolveAPI = require('./config/resolveAPI');
 
 module.exports = {
     context: path.resolve(__dirname, './client'),
@@ -35,6 +37,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: 'index.template.ejs',
             filename: 'index.html'
+        }),
+        new webpack.DefinePlugin({
+            __API__: JSON.stringify(resolveAPI())
         })
     ],
     resolve: {
