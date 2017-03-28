@@ -4,7 +4,7 @@ var app = express();
 const port = process.env.port || 3001;
 
 app.get('/', function(req, res) {
-    res.status(200).json({server: 'pdflegal'});
+    res.status(200).json({server: 'pdflegal', status: 'ok'});
 });
 
 app.get('/add', function(req, res) {
