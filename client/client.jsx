@@ -5,20 +5,11 @@ import React from 'react';
 import { render } from 'react-dom';
 import Root from './components/Root';
 
+import { Provider, connect } from 'react-redux';
 
-import { createStore } from 'redux';
-function counter(state = 0, action) {
-    switch (action.type) {
-        case 'INCREMENT':
-            return state + 1;
-        case 'DECREMENT':
-            return state - 1
-        default:
-            return state;
-    }
-}
+import configureStore from './configureStore';
 
-let store = createStore(counter)
+const store = configureStore();
 
 store.subscribe(() =>
     console.log(store.getState())
@@ -27,6 +18,8 @@ store.subscribe(() =>
 store.dispatch({ type: 'INCREMENT' });
 store.dispatch({ type: 'INCREMENT' });
 store.dispatch({ type: 'DECREMENT' });
+store.dispatch({ type: 'ADD_FILE', name: '1.txt' });
+store.dispatch({ type: 'REMOVE_FILE', name: '1.txt' });
 
 render (
     <Root />,
