@@ -1,3 +1,5 @@
+import { INCREMENT, DECREMENT } from 'constants/action-types'
+
 const incCounter = () => (dispatch, getState) => {
     setTimeout( () => dispatch({
         type: 'INCREMENT'
@@ -10,7 +12,7 @@ const decCounter = () => (dispatch, getState) => {
     }), 500)
 }
 
-module.exports = {
+export {
     incCounter,
     decCounter
 }
