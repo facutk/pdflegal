@@ -9,6 +9,8 @@ import { Provider, connect } from 'react-redux';
 
 import configureStore from './configureStore';
 
+import { incCounter, decCounter } from './actions/counter'
+
 //const store = configureStore();
 
 //store.subscribe(() =>
@@ -30,14 +32,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onIncClick: () => {
-            dispatch({
-                type: 'INCREMENT',
-            })
+            dispatch(incCounter())
         },
         onDecClick: () => {
-            dispatch({
-                type: 'DECREMENT',
-            })
+            dispatch(decCounter())
         },
         onFileAdd: () => {
             dispatch({
