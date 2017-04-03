@@ -1,5 +1,6 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
+import Counter from './Counter'
 
 const addFile = file => {
     return new Promise((resolve, reject) => {
@@ -55,7 +56,8 @@ const Root = () => (
                 .catch(({status}) => console.error(status))
 
         }}>
-        El Reacto 
+        <b>El Reacto</b>
+        <Counter />
     </div>
 )
 
