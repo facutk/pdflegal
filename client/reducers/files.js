@@ -4,13 +4,13 @@ const files = (state = [], action) => {
             return state.concat({
                 name: action.name
             });
-            break;
+            break
         case 'REMOVE_FILE':
-            return state.filter(file => { return file.name != action.name; });
-            return state;
+            return state.filter(file => { return file.name != action.name; })
+            return state
         default:
-            return state;
+            return state
     }
 }
 
-export default files;
+export default files

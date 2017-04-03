@@ -1,15 +1,15 @@
-import 'babel-polyfill';
-import './style.scss';
+import 'babel-polyfill'
+import './style.scss'
 
-import React from 'react';
-import { render } from 'react-dom';
-import Root from './components/Root';
+import React from 'react'
+import { render } from 'react-dom'
+import Root from 'components/Root'
 
-import { Provider, connect } from 'react-redux';
+import { Provider, connect } from 'react-redux'
 
-import store from './store';
+import store from 'store'
 
-import { incCounter, decCounter } from './actions/counter'
+import { incCounter, decCounter } from 'actions/counter'
 
 const mapStateToProps = (state) => ({
     counter: state.counter
@@ -29,8 +29,8 @@ const mapDispatchToProps = (dispatch) => {
                 name: '1.txt'
             })
         }
-    };
-};
+    }
+}
 
 let CounterApp = (props) => (
     <div>
@@ -58,4 +58,4 @@ render (
         <CounterApp />
     </Provider>,
     document.getElementById('root')
-);
+)

@@ -43,7 +43,11 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
+        modules: [
+            path.resolve('./client'),
+            path.resolve('./node_modules')
+        ]
     },
     devServer: {
         contentBase: path.resolve(__dirname, './src')
