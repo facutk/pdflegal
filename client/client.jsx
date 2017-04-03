@@ -7,27 +7,13 @@ import Root from './components/Root';
 
 import { Provider, connect } from 'react-redux';
 
-import configureStore from './configureStore';
+import store from './store';
 
 import { incCounter, decCounter } from './actions/counter'
 
-//const store = configureStore();
-
-//store.subscribe(() =>
-    //console.log(store.getState())
-//)
-
-//store.dispatch({ type: 'INCREMENT' });
-//store.dispatch({ type: 'INCREMENT' });
-//store.dispatch({ type: 'DECREMENT' });
-//store.dispatch({ type: 'ADD_FILE', name: '1.txt' });
-//store.dispatch({ type: 'REMOVE_FILE', name: '1.txt' });
-
-const mapStateToProps = (state) => {
-    return {
-        counter: state.counter
-    };
-}
+const mapStateToProps = (state) => ({
+    counter: state.counter
+})
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -68,7 +54,7 @@ CounterApp = connect(
 )(CounterApp)
 
 render (
-    <Provider store={configureStore()}>
+    <Provider store={store}>
         <CounterApp />
     </Provider>,
     document.getElementById('root')
