@@ -1,6 +1,7 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
 import Counter from './Counter'
+import { connect } from 'react-redux'
 
 const addFile = file => {
     return new Promise((resolve, reject) => {
@@ -46,9 +47,13 @@ const pollStatus = (status) => {
 
 
 
-const Root = () => (
+const Root = ({files = [], dispatch}) => (
     <div onClick={()=>{
             console.log(__API__);
+            dispatch({
+                type: 'ADD_FILE',
+                name: 'file.txt'
+            })
 
             addFile('test.pdf')
                 .then(response => pollStatus(response))
@@ -57,8 +62,15 @@ const Root = () => (
 
         }}>
         <b>El Reacto</b>
+        <ul>{files.map((file,index) =>(
+            <li key={index}>{file.name}</li>
+        ))}
+        </ul>
         <Counter />
     </div>
 )
 
-export default Root
+const mapStateToProps = (state) => ({
+    files: state.files
+})
+export default connect(mapStateToProps)(Root)
