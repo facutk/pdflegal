@@ -14,16 +14,26 @@ const files = (state = [], action) => {
         case 'REMOVE_FILE':
             return state.filter(file => { return file.name != action.name; })
         case FETCH_STATUS_REQUEST:
-            return state
+            return state.map(file => {
+                if (file.name == action.name) {
+                    file.status = 'processing'
+                }
+                return file
+            })
         case FETCH_STATUS_SUCCESS:
             return state.map(file => {
-                console.log(file, file.name, action, action.name, file.name == action.name)
                 if (file.name == action.name) {
                     file.status = 'added'
                 }
                 return file
             })
         case FETCH_STATUS_FAILURE:
+            return state.map(file => {
+                if (file.name == action.name) {
+                    file.status = 'error'
+                }
+                return file
+            })
             return state
         default:
             return state

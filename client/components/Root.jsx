@@ -4,7 +4,8 @@ import Counter from './Counter'
 import { connect } from 'react-redux'
 import { 
     FETCH_STATUS_REQUEST,
-    FETCH_STATUS_SUCCESS
+    FETCH_STATUS_SUCCESS,
+    FETCH_STATUS_FAILURE
 } from 'constants/action-types'
 
 const addFile = file => {
@@ -53,34 +54,33 @@ const pollStatus = (status) => {
 
 const Root = ({files = [], dispatch}) => (
     <div onClick={()=>{
-            console.log(__API__);
+
+            const name = Math.random().toString(36).substring(7)
+
             dispatch({
                 type: 'ADD_FILE',
-                name: 'test.pdf',
+                name: name,
                 status: 'processing'
             })
 
             dispatch({
                 type: FETCH_STATUS_REQUEST,
-                name: 'test.pdf'
+                name: name
             })
-            addFile('test.pdf')
+            addFile(name)
                 .then(response => pollStatus(response))
-                .then(({status}) => {
-                    console.log(status)
-                    dispatch({
-                        type: FETCH_STATUS_SUCCESS,
-                        name: 'test.pdf'
-                    })
-                })
-                .catch(({status}) => console.error(status))
+                .then(({status}) => dispatch({
+                    type: FETCH_STATUS_SUCCESS,
+                    name: name
+                }))
+                .catch(({status}) => dispatch({
+                    type: FETCH_STATUS_FAILURE,
+                    name: name
+                }))
 
         }}>
         <b>El Reacto</b>
-        <ul>{files.map((file,index) =>(
-            <li key={index}>{file.name} [{file.status}]</li>
-        ))}
-        </ul>
+        <pre>{files.map(file =>( `${file.name} [${file.status}]`)).join('\n')}</pre>
         <Counter />
     </div>
 )
