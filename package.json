@@ -7,7 +7,7 @@
     "node": ">=4.3.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "webpack-dev-server": "webpack-dev-server --hot --inline --history-api-fallback",
     "backend": "nodemon server/server.js",
     "dev": "npm-run-all --parallel webpack-dev-server backend",
@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
+    "babel-jest": "^19.0.0",
     "babel-loader": "^6.4.1",
     "babel-plugin-syntax-decorators": "^6.13.0",
     "babel-plugin-transform-class-properties": "^6.23.0",
@@ -38,6 +39,7 @@
     "clean-webpack-plugin": "^0.1.16",
     "css-loader": "^0.27.3",
     "html-webpack-plugin": "^2.28.0",
+    "jest": "^19.0.2",
     "node-sass": "^4.5.1",
     "npm-run-all": "^4.0.2",
     "sass-loader": "^6.0.3",
