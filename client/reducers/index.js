@@ -3,8 +3,8 @@ import counter from './counter'
 import files from './files'
 
 const reducers = combineReducers({
-    counter,
-    files
+  counter,
+  files
 })
 
 export default reducers
