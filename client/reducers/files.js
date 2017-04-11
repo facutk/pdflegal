@@ -10,9 +10,9 @@ const files = (state = [], action) => {
             return state.concat({
                 name: action.name,
                 status: 'adding'
-            });
+            })
         case 'REMOVE_FILE':
-            return state.filter(file => { return file.name != action.name; })
+            return state.filter(file => { return file.name != action.name })
         case FETCH_STATUS_REQUEST:
             return state.map(file => {
                 if (file.name == action.name) {
