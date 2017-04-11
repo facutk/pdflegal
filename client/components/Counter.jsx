@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { incCounter, decCounter } from 'actions/counter'
+import { asyncCounterIncrement, asyncCounterDecrement } from 'actions/counter'
 
 const mapStateToProps = (state) => ({
     counter: state.counter
@@ -9,10 +9,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
     return {
         onIncClick: () => {
-            dispatch(incCounter())
+            dispatch(asyncCounterIncrement())
         },
         onDecClick: () => {
-            dispatch(decCounter())
+            dispatch(asyncCounterDecrement())
         }
     }
 }
