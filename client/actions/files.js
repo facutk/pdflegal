@@ -2,9 +2,10 @@ import {
   FILE_UPLOAD_START,
   FILE_UPLOAD_SUCCESS,
   FILE_UPLOAD_ERROR,
-  FILE_CHECK_STATUS_START,
-  FILE_CHECK_STATUS_SUCCESS,
-  FILE_CHECK_STATUS_ERROR
+
+  FILE_PROCESSING_STATUS_START,
+  FILE_PROCESSING_STATUS_SUCCESS,
+  FILE_PROCESSING_STATUS_ERROR
 } from 'constants/action-types'
 
 import v4 from 'uuid'
@@ -17,18 +18,16 @@ export const fileUploadStart = (uuid, filename, timestamp) => ({
   timestamp
 })
 
-export const fileUploadSuccess = (uuid, filename, timestamp, expires) => ({
+export const fileUploadSuccess = (uuid, timestamp, expires) => ({
   type: FILE_UPLOAD_SUCCESS,
   uuid,
-  filename,
   timestamp,
   expires
 })
 
-export const fileUploadError = (uuid, filename, timestamp) => ({
+export const fileUploadError = (uuid, timestamp) => ({
   type: FILE_UPLOAD_ERROR,
   uuid,
-  filename,
   timestamp
 })
 
@@ -43,6 +42,12 @@ export const asyncFileUpload = (filename) => (dispatch) => {
 
   fetch(`${__API__}/add`)
     .then((response) => {
+      if (response.status >= 400)
+        return dispatch(fileUploadError(
+          uuid,
+          Date.now()
+        ))
+
       dispatch(fileUploadSuccess(
         uuid,
         Date.now(),
@@ -50,7 +55,7 @@ export const asyncFileUpload = (filename) => (dispatch) => {
         response.expires
       ))
 
-      dispatch(asyncFileCheckStatus(
+      dispatch(asyncFileProcessingStatus(
         uuid
       ))
     })
@@ -61,35 +66,38 @@ export const asyncFileUpload = (filename) => (dispatch) => {
     )
 }
 
-export const fileCheckStatusStart = (uuid, timestamp) => ({
-  type: FILE_CHECK_STATUS_START,
+export const fileProcessingStatusStart = (uuid, timestamp) => ({
+  type: FILE_PROCESSING_STATUS_START,
   uuid,
   timestamp
 })
 
-export const fileCheckStatusSuccess = (uuid, status, timestamp) => ({
-  type: FILE_CHECK_STATUS_SUCCESS,
-  uuid,
-  status,
-  timestamp
-})
-
-export const fileCheckStatusError = (uuid, timestamp) => ({
-  type: FILE_CHECK_STATUS_ERROR,
+export const fileProcessingStatusSuccess = (uuid, timestamp) => ({
+  type: FILE_PROCESSING_STATUS_SUCCESS,
   uuid,
   timestamp
 })
 
-const asyncFileCheckStatus = (uuid) => (dispatch) => {
-  dispatch(fileCheckStatusStart(
+export const fileProcessingStatusError = (uuid, timestamp) => ({
+  type: FILE_PROCESSING_STATUS_ERROR,
+  uuid,
+  timestamp
+})
+
+const asyncFileProcessingStatus = (uuid) => (dispatch) => {
+  dispatch(fileProcessingStatusStart(
     uuid,
     Date.now()
   ))
 
+  dispatch(asyncFileCheckStatus(uuid))
+}
+
+const asyncFileCheckStatus = (uuid) => (dispatch) => {
   fetch(`${__API__}/status`)
     .then(response => {
       if (response.status >= 400)
-        return dispatch(fileCheckStatusError(
+        return dispatch(fileProcessingStatusError(
           uuid,
           Date.now()
         ))
@@ -98,26 +106,20 @@ const asyncFileCheckStatus = (uuid) => (dispatch) => {
     })
     .then(response => {
       if (response.status == 'error') {
-        return dispatch(fileCheckStatusError(
+        dispatch(fileProcessingStatusError(
           uuid,
           Date.now()
         ))
       } else if (response.status == 'processing') {
-        dispatch(fileCheckStatusSuccess(
-          uuid,
-          'still processing',
-          Date.now()
-        ))
         setTimeout(() => dispatch(asyncFileCheckStatus(uuid)), 1000)
       } else {
-        dispatch(fileCheckStatusSuccess(
+        dispatch(fileProcessingStatusSuccess(
           uuid,
-          'processed',
           Date.now()
         ))
       }
     })
-    .catch(error => dispatch(fileCheckStatusError(
+    .catch(error => dispatch(fileProcessingStatusError(
         uuid,
         Date.now()
       ))

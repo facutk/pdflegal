@@ -1,15 +1,11 @@
 import {
-  FETCH_STATUS_REQUEST,
-  FETCH_STATUS_SUCCESS,
-  FETCH_STATUS_FAILURE,
-
   FILE_UPLOAD_START,
   FILE_UPLOAD_SUCCESS,
   FILE_UPLOAD_ERROR,
 
-  FILE_CHECK_STATUS_START,
-  FILE_CHECK_STATUS_SUCCESS,
-  FILE_CHECK_STATUS_ERROR
+  FILE_PROCESSING_STATUS_START,
+  FILE_PROCESSING_STATUS_SUCCESS,
+  FILE_PROCESSING_STATUS_ERROR
 } from 'constants/action-types'
 
 const files = (state = [], action) => {
@@ -40,7 +36,7 @@ const files = (state = [], action) => {
     case 'REMOVE_FILE':
       return state.filter(file => { return file.uuid != action.uuid })
 
-    case FILE_CHECK_STATUS_START:
+    case FILE_PROCESSING_STATUS_START:
       return state.map(file => {
         if (file.uuid == action.uuid) {
           file.status = 'processing'
@@ -48,18 +44,18 @@ const files = (state = [], action) => {
         return file
       })
 
-    case FILE_CHECK_STATUS_SUCCESS:
+    case FILE_PROCESSING_STATUS_SUCCESS:
       return state.map(file => {
         if (file.uuid == action.uuid) {
-          file.status = action.status
+          file.status = 'processed'
         }
         return file
       })
 
-    case FILE_CHECK_STATUS_ERROR:
+    case FILE_PROCESSING_STATUS_ERROR:
       return state.map(file => {
         if (file.uuid == action.uuid) {
-          file.status = 'error'
+          file.status = 'processing error'
         }
         return file
       })
