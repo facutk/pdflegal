@@ -13,6 +13,11 @@ class FilePicker extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.handleAddFile(this.state.filename)
+    this.setState({
+      data_uri: null,
+      filename: null,
+      filetype: null
+    })
   }
 
   handleFile = (e) => {
@@ -37,7 +42,7 @@ class FilePicker extends React.Component {
         <label>Upload a file</label>
         <form onSubmit={this.handleSubmit} encType="multipart/form-data">
           <input type="file" onChange={this.handleFile} />
-          <input type="submit" value="Upload" />
+          <input disabled={!this.state.filename} type="submit" value="Upload" />
         </form>
       </div>
     )
