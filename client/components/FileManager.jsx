@@ -1,14 +1,13 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import FilePicker from './FilePicker'
 import { asyncFileUpload } from 'actions/files'
-
-import { v4 } from 'uuid'
+import { connect } from 'react-redux'
 
 const FileManager = ({files = [], dispatch}) => (
-  <div onClick={() => dispatch(asyncFileUpload(
-        `${ v4() }.pdf`
-      ))
-    }>
+  <div>
+    <FilePicker 
+      handleAddFile={(filename) => dispatch(asyncFileUpload(filename))
+    }/>
     <b>El Reacto</b>
     <pre>{files.map(file =>( `${file.filename} [${file.status}]`)).join('\n')}</pre>
   </div>
