@@ -8,8 +8,15 @@ const FileManager = ({files = [], dispatch}) => (
     <FilePicker 
       handleAddFile={(filename) => dispatch(asyncFileUpload(filename))
     }/>
-    <b>El Reacto</b>
-    <pre>{files.map(file =>( `${file.filename} [${file.status}]`)).join('\n')}</pre>
+
+    <h3>Status</h3>
+    <blockquote>
+      {files.map((file,index) => (
+        <p key={index}>
+          {file.filename} [{file.status}]
+        </p>
+      ))}
+    </blockquote>
   </div>
 )
 

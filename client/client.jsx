@@ -1,4 +1,5 @@
 import 'babel-polyfill'
+import 'milligram'
 import './style.scss'
 
 import React from 'react'
