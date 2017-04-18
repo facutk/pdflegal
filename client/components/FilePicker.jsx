@@ -39,13 +39,13 @@ class FilePicker extends React.Component {
   render() {
     return (
       <div>
-        <h3>Upload a file</h3>
+        <h3>Selecciona archivos</h3>
         <form onSubmit={this.handleSubmit} encType="multipart/form-data">
           <label htmlFor="pickFile" className="button button-outline">
-            Select your File
+            Selecciona un archivo
           </label>
           <input type="file" onChange={this.handleFile} id="pickFile" style={{display: 'none'}}/>
-          <input disabled={!this.state.filename} type="submit" value="Upload" />
+          <input disabled={!this.state.filename} type="submit" value="Agregar" />
         </form>
       </div>
     )

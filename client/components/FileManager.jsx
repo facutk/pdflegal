@@ -17,6 +17,8 @@ const FileManager = ({files = [], dispatch}) => (
         </p>
       ))}
     </blockquote>
+
+    <button disabled>Descargar PDFs</button>
   </div>
 )
 
