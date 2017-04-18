@@ -3,7 +3,7 @@ import FileManager from './FileManager'
 import Counter from './Counter'
 
 const Root = () => (
-  <div>
+  <div className="container">
     <FileManager />
     <Counter />
   </div>

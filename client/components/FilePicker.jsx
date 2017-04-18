@@ -39,9 +39,12 @@ class FilePicker extends React.Component {
   render() {
     return (
       <div>
-        <label>Upload a file</label>
+        <h3>Upload a file</h3>
         <form onSubmit={this.handleSubmit} encType="multipart/form-data">
-          <input type="file" onChange={this.handleFile} />
+          <label htmlFor="pickFile" className="button button-outline">
+            Select your File
+          </label>
+          <input type="file" onChange={this.handleFile} id="pickFile" style={{display: 'none'}}/>
           <input disabled={!this.state.filename} type="submit" value="Upload" />
         </form>
       </div>
