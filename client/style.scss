@@ -1,39 +1,27 @@
-$primary-color: #7FDBFF;
+$primary-color: #2185d0;
 
 body {
   background-color: #fafafa;
 }
 
-/* Include this stylesheet after Milligram or merge it with your main.css */
-
 a {
-        color: #7FDBFF;
+  color: $primary-color;
 }
 
-.button, button, input[type='button'], input[type='reset'], input[type='submit']
-{
-        background-color: #7FDBFF;
-            border: .1rem solid #7FDBFF;
-}
-
-.button[disabled]:focus, .button[disabled]:hover, button[disabled]:focus,
-button[disabled]:hover, input[type='button'][disabled]:focus,
-input[type='button'][disabled]:hover, input[type='reset'][disabled]:focus,
-input[type='reset'][disabled]:hover, input[type='submit'][disabled]:focus,
-input[type='submit'][disabled]:hover {
-        background-color: #9b4dca;
-            border-color: #9b4dca;
+.button, button, input[type='button'], input[type='reset'], input[type='submit'] {
+  background-color: $primary-color;
+  border: .1rem solid $primary-color;
 }
 
 .button.button-outline, button.button-outline,
 input[type='button'].button-outline, input[type='reset'].button-outline,
 input[type='submit'].button-outline {
-        color: #7FDBFF;
+  color: $primary-color;
 }
 
 .button.button-clear, button.button-clear, input[type='button'].button-clear,
 input[type='reset'].button-clear, input[type='submit'].button-clear {
-        color: #7FDBFF;
+  color: $primary-color;
 }
 
 .button[disabled]:focus, .button[disabled]:hover, button[disabled]:focus,
@@ -41,50 +29,49 @@ button[disabled]:hover, input[type='button'][disabled]:focus,
 input[type='button'][disabled]:hover, input[type='reset'][disabled]:focus,
 input[type='reset'][disabled]:hover, input[type='submit'][disabled]:focus,
 input[type='submit'][disabled]:hover {
-        background-color: #7FDBFF;
-            border-color: #7FDBFF;
+  background-color: $primary-color;
+  border-color: $primary-color;
 }
 
 pre.prettyprint .lit {
-        color: #7FDBFF;
+  color: $primary-color;
 }
 
 .share-icon {
-        background-color: #7FDBFF;
-            color: #ffffff;
+  background-color: $primary-color;
+  color: #ffffff;
 }
 
 pre {
-        background: #f4f5f6;
-            border-left: .3rem solid #7FDBFF;
+  background: #f4f5f6;
+  border-left: .3rem solid $primary-color;
 }
 
 pre.prettyprint {
-        border-left: .3rem solid #7FDBFF !important;
-            color: #655d5d;
+  border-left: .3rem solid $primary-color !important;
+  color: #655d5d;
 }
 
 pre.prettyprint .tag {
-        color: #7FDBFF;
+  color: $primary-color;
 }
 
 pre.prettyprint .atn {
-        color: #0065ce;
+  color: #0065ce;
 }
 
 input[type='email']:focus, input[type='number']:focus,
 input[type='password']:focus, input[type='search']:focus,
 input[type='tel']:focus, input[type='text']:focus, input[type='url']:focus,
 textarea:focus, select:focus {
-        border: .1rem solid #7FDBFF;
+  border: .1rem solid $primary-color;
 }
 
 .github-corner {
-        color: #f4f5f6;
-            fill: #7FDBFF;
+  color: #f4f5f6;
+  fill: $primary-color;
 }
 
-
 .wrapper>.container {
-    padding-bottom: 3rem;
+  padding-bottom: 3rem;
 }
