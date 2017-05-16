@@ -62,6 +62,17 @@ local$ ssh-copy-id git@server
 local$ ssh git@server
 ```
 
+edit .bashrc
+```
+comment out the following
+
+# If not running interactively, don't do anything
+# case $- in
+#     *i*) ;;
+#       *) return;;
+# esac
+```
+
 ### Configure nginx
 
 #### Test
