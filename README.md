@@ -11,10 +11,17 @@ root@ubuntu:~# su - git
 
 git@ubuntu:~$ sudo apt update && sudo apt upgrade
 git@ubuntu:~$ sudo apt install -y git nginx redis systemd
-git@ubuntu:~$ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-git@ubuntu:~$ sudo apt-get install -y nodejs
+git@ubuntu:~$ sudo apt install build-essential libssl-dev
+git@ubuntu:~$ curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+git@ubuntu:~$ source .bashrc
+git@ubuntu:~$ nvm install 6
 git@ubuntu:~$ sudo npm install -g pm2
-git@ubuntu:~$ git clone https://github.com/facutk/pdflegal.git && cd pdflegal/server
+git@ubuntu:~$ git clone https://github.com/facutk/pdflegal.git 
+git@ubuntu:~$ cd pdflegal/server/
+git@ubuntu:~$ npm install
+git@ubuntu:~$ cd server/
+git@ubuntu:~$ npm install
+
 git@ubuntu:~/pdflegal/server$ pm2 start --name pdflegal server.js
   [PM2] Starting /home/git/pdflegal/server/server.js in fork_mode (1 instance)
   [PM2] Done.
@@ -32,7 +39,8 @@ git@ubuntu:~/pdflegal/server$ pm2 startup upstart
   sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup upstart -u git --hp /home/git
 
 git@ubuntu:~/pdflegal/server$ sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u git --hp /home/git
-  [sudo] password for git:
+git@ubuntu:~/pdflegal/server$ sudo env PATH=$PATH:/home/git/.nvm/versions/node/v6.10.3/bin /home/git/.nvm/versions/node/v6.10.3/lib/node_modules/pm2/bin/pm2 startup systemd -u git --hp /home/git
+  [sudo] password for git
   [PM2] Init System found: upstart
   ....
 
