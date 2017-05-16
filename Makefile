@@ -11,6 +11,6 @@ update:
 	@echo "Makefile: Doing UPDATE stuff like grunt, gulp, rake,..."
 	@npm install
 	@echo "pm2 reloading services"
-	@sudo /etc/init.d/pm2-facutk restart
+	@sudo service pm2-git restart
 	@echo "deploying to gh-pages"
 	@node push-to-ghpages.js

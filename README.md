@@ -8,6 +8,8 @@ root@ubuntu:~# adduser git
 root@ubuntu:~# usermod -aG sudo git
 root@ubuntu:~# exit
 root@ubuntu:~# su - git
+git@ubuntu:~$ sudo visudo
+  git ALL=(ALL) NOPASSWD:ALL
 
 git@ubuntu:~$ sudo apt update && sudo apt upgrade
 git@ubuntu:~$ sudo apt install -y git nginx redis systemd
@@ -32,24 +34,25 @@ git@ubuntu:~/pdflegal/server$ pm2 start --name pdflegal server.js
   └──────────┴──────┴────────┴───┴──────┴───────────┘
   Use `pm2 show <id|name>` to get more details about an app
 
-git@ubuntu:~/pdflegal/server$ pm2 startup upstart
+git@ubuntu:~/pdflegal/server$ pm2 startup
 
   [PM2] Init System found: systemd
-  [PM2] You have to run this command as root. Execute the following command:
-  sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup upstart -u git --hp /home/git
+  [PM2] You have to run this command as root. Execute the following command: ...
 
-git@ubuntu:~/pdflegal/server$ sudo env PATH=$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u git --hp /home/git
 git@ubuntu:~/pdflegal/server$ sudo env PATH=$PATH:/home/git/.nvm/versions/node/v6.10.3/bin /home/git/.nvm/versions/node/v6.10.3/lib/node_modules/pm2/bin/pm2 startup systemd -u git --hp /home/git
   [sudo] password for git
-  [PM2] Init System found: upstart
   ....
 
 git@ubuntu:~/pdflegal/server$ pm2 save
   [PM2] Saving current process list...
   [PM2] Successfully saved in /home/git/.pm2/dump.pm2
 
+git@ubuntu:~$ sudo service pm2 restart
+
 git@ubuntu:~/pdflegal/server$ curl localhost
   {"server":"pdflegal"}
+
+
 
 ```
 
