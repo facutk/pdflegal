@@ -125,6 +125,11 @@ server {
     listen 80;
     server_name pdflegal_server;
     
+    location ~ \.pdf {
+      root /tmp;
+      expires -1;
+    }
+
     location / {
     	proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     	proxy_set_header Host $http_host;
